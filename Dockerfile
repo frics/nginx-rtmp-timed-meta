@@ -174,6 +174,8 @@ COPY --from=build-ffmpeg /usr/lib/libfdk-aac.so.2 /usr/lib/libfdk-aac.so.2
 ENV PATH "${PATH}:/usr/local/nginx/sbin"
 ADD nginx.conf /etc/nginx/nginx.conf.template
 RUN mkdir -p /opt/data && mkdir /www
+RUN cd /opt/data && \
+        mkdir logs
 ADD static /www/static
 
 EXPOSE 1935
